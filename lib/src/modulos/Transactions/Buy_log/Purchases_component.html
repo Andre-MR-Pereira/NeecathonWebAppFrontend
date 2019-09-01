@@ -1,0 +1,46 @@
+<section id="trans_log-section" class="page text-center">
+    <div class="page-header-wrapper">
+        <div class="container">
+            <div class="page-header text-center">
+                <h2>Registo de Transacções</h2>
+            </div>
+        </div>
+    </div>
+    <div class="box-wrapper">
+        <div class="container">
+
+
+
+
+            <table class="table table-hover table-striped table-fixed ">
+                <thead >
+                <tr class="bg-primary">
+                    <th class="col-xs-2"> De</th>
+                    <th class="col-xs-2"> Para</th>
+                    <th class="col-xs-2"> Valor</th>
+                    <th class="col-xs-6" >Descrição</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <tr>
+                    <td class="col-xs-2">
+                        <select [(ngModel)]="transaction.destTeam" class="form-control">
+                            <option *ngFor="let info of purchases" value="{{info.destTeam}}">{{info.destTeam}}</option>
+                        </select>
+                    </td>
+                    <td class="col-xs-2"> Paiva</td>
+                    <td class="col-xs-2"> 0,90</td>
+                    <td class="col-xs-6">Resistência</td>
+                </tr>
+                </tbody>
+
+
+            </table>
+
+        </div>
+    </div>
+
+
+</section>
