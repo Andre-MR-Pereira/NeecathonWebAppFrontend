@@ -1,0 +1,50 @@
+<section id="trans_log-section" class="page text-center">
+    <div class="page-header-wrapper">
+        <div class="container">
+            <div class="page-header text-center">
+                <h2>Registo de Transacções</h2>
+            </div>
+        </div>
+    </div>
+    <div class="box-wrapper">
+        <div class="container">
+
+
+
+
+            <table class="table table-hover table-striped table-fixed ">
+                <thead >
+                <tr class="bg-primary">
+                    <th class="col-xs-2"> De</th>
+                    <th class="col-xs-2"> Para</th>
+                    <th class="col-xs-2"> Valor</th>
+                    <th class="col-xs-6" >Descrição</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="col-xs-2">
+
+                        <output *ngFor="let purchase of purchases" value="{{purchase.sourceTeam}}">{{purchase.sourceTeam}}</output>
+                    </td>
+                    <td class="col-xs-2">
+                        <output *ngFor="let purchase of purchases" value="{{purchase.destTeam}}">{{purchase.destTeam}}</output>
+                    </td>
+                    <td class="col-xs-2">
+                        <output *ngFor="let purchase of purchases" value="{{purchase.amount}}">{{purchase.amount}}</output>
+                    </td>
+                    <td class="col-xs-6">
+                        <output *ngFor="let purchase of purchases" value="{{purchase.description}}">{{purchase.description}}</output>
+                    </td>
+                </tr>
+                </tbody>
+
+
+            </table>
+
+        </div>
+    </div>
+
+
+</section>
