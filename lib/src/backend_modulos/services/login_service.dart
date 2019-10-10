@@ -12,7 +12,7 @@ class LoginService {
   static final _headers = {'Content-Type': 'application/json'};
   Future<String> create(User user) async {
     try {
-      final response = await _http.post("http://51.145.20.150:1995/" + "login", headers: _headers, body: json.encode(user.toJsonLogin()));
+      final response = await _http.post("http://51.140.25.28:1995/" + "login", headers: _headers, body: json.encode(user.toJsonLogin()));
       print(response.statusCode);
       if(response.statusCode == 200)
         return 'Login successful';
@@ -25,7 +25,7 @@ class LoginService {
 
   Future<String> getToken(String email) async {
     try{
-      final response = await _http.post("http://51.145.20.150:1995/" + "users/getToken", headers: _headers, body: json.encode({'email': email}));
+      final response = await _http.post("http://51.140.25.28:1995/" + "users/getToken", headers: _headers, body: json.encode({'email': email}));
       return response.body;
     }catch (e){
       print(e);

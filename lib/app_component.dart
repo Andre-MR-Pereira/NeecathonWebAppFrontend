@@ -1,5 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';  //formDirectives
+import 'package:uniao/src/backend_modulos/services/product_service.dart';
+import 'package:uniao/src/backend_modulos/services/purchase_service.dart';
 import 'src/todo_list/todo_list_component.dart';  //TodoListComponent
 
 //Routing
@@ -28,7 +30,7 @@ import 'src/modulos/Footer/Footer.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  providers: [ClassProvider(UserService), ClassProvider(TeamService), ClassProvider(LoginService), ClassProvider(TransactionService), ClassProvider(GetTeamsComponent)],
+  providers: [ClassProvider(UserService), ClassProvider(TeamService), ClassProvider(LoginService), ClassProvider(TransactionService), ClassProvider(GetTeamsComponent),ClassProvider(ProductService),ClassProvider(PurchaseService)],
   directives: [TodoListComponent,formDirectives,CarouselForm,NavBarform,Shop,TransactionsForm,PurchaseLog,PageFooter,routerDirectives],
   exports: [RoutePaths,Routes],
 )

@@ -11,7 +11,7 @@ class UserService {
   Future<String> create(User user) async {
     print(json.encode(user.toJson()));
     try {
-      final reponse = await _http.post("http://51.145.20.150:1995/" + "users/create/", headers: _headers, body: json.encode(user.toJson()));
+      final reponse = await _http.post("http://51.140.25.28:1995/" + "users/create/", headers: _headers, body: json.encode(user.toJson()));
       return(reponse.toString());
     }catch (e){
       //throw _handleError;

@@ -8,7 +8,9 @@ class Team {
   User user1, user2, user3, user4;
   Project project;
   String name;
-  Team(this.id, this.user1, this.user2, this.user3, this.user4, this.name, this.project);
+  int cash;
+  bool isAdmin;
+  Team(this.id, this.user1, this.user2, this.user3, this.user4, this.name,this.cash, this.project,this.isAdmin);
 
   Map toJson() {
     var dict = {
@@ -47,7 +49,7 @@ class Team {
   }
 
   factory Team.fromJson(Map<String, dynamic> team){
-    Team teamz = new Team(0, null, null, null, null, "", null);
+    Team teamz = new Team(0, null, null, null, null, "",null, null,null);
 
     User user1 = new User(0, team['username1'], team['password1'], team['email1'], team['linkedIn1'], team['gitHub1'], "");
     teamz.user1 = user1;
@@ -66,6 +68,8 @@ class Team {
       teamz.user4 = user4;
     }
     teamz.name = team['name'];
+    teamz.cash = team['cash'];
+    teamz.isAdmin = team['isAdmin'];
     teamz.project = new Project(0, team['project_name'], "description", "gitHub", "teamName");
 
     return teamz;

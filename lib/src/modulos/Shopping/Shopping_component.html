@@ -1,214 +1,55 @@
-<section id="shop-section" class="page">
-    <div class="page-header-wrapper">
+<section id="store" class="page">
+    <div class="page-header-wrapper" style="margin-top: 68px">
         <div class="container">
             <div class="page-header text-center">
                 <h2>Compras</h2>
             </div>
         </div>
     </div>
-    <div class="box-wrapper">
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-sm-12">
-                    <h3>Categoria I</h3>
-                </div>
+    <div class="brand-coin" *ngIf="loggedin==true" [hidden]="submitted">
+        <img src="../../../../assets/images/coin64.png" width="64" height="64" class="d-inline-block align-top"> {{team.cash}} Neecoins
+    </div>
+    <div class="box-wrapper" [hidden]="submitted">
+        <form class="form-inline" (ngSubmit)="onSubmit()">
+            <div class="row mb-30">
+                <div class="container">
+                 <div class="col-md-3 col-sm-6 mt-30" *ngFor="let product of products">
+                        <div style="border: 3px solid gray;">
+                           <div class="desc-container">
+                              <div class="desc h-100 w-100 d-none" style="font-family: 'Bitwise', Fallback, sans-serif">
+                                 <p>{{product.description}}</p>
+                                </div>
+                              <img class="w-100 h-100 desc-img" src="{{product.image_path}}" alt="{{product.name}}">
+                          </div>
+                           <p class="text-center">{{product.name}}  Q:{{product.quantity}}</p>
+                     </div>
+                     <div class="d-flex">
+                         <div class="col-xs-9 p-0">
+                               <button class="w-100 buybtn" type="submit" (click)="PurchaseSetup(product)">Comprar</button>
+                            </div>
+                           <div class="col-xs-3 p-0">
+                              <input class="w-100 h-100" type="number" min="1" [(ngModel)]="purchase.quantity">
+                          </div>
+                      </div>
+                 </div>
+             </div>
             </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item1</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item2</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item3</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item4</p>
-                    </div>
-                </div>
+        </form>
+    </div>
+    <div [hidden]="!submitted">
+        <div *ngIf="success==true">
+            <div class="alert alert-success" role="alert">
+                Compra realizada com sucesso!
             </div>
-            <div class="collapse category-1-more">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="rotate-box-info">
-                            <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                            <p>Item5</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="rotate-box-info">
-                            <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                            <p>Item6</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="rotate-box-info">
-                            <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                            <p>Item7</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="rotate-box-info">
-                            <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                            <p>Item8</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 text-center">
-                        <a href=".category-1-more" data-toggle="collapse">Fechar</a>
-                    </div>
-                </div>
+            <button (click)="submitted=false" class="btn btn-primary">Realizar outra Compra</button>
+        </div>
+        <div *ngIf="success==false">
+            <div class="alert alert-danger" role="alert">
+                Erro durante a compra.Motivo:{{out}}.
             </div>
-            <div class="row category-1-more collapse in">
-                <div class="col-sm-12 text-center">
-                    <a href=".category-1-more" data-toggle="collapse">Mais</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3>Categoria II</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item1</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item2</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item3</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item4</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row collapse category-2-more">
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item5</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item6</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item7</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item8</p>
-                    </div>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <a href=".category-2-more" data-toggle="collapse">Fechar</a>
-                </div>
-            </div>
-            <div class="row category-2-more collapse in">
-                <div class="col-sm-12 text-center">
-                    <a href=".category-2-more" data-toggle="collapse">Mais</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3>Categoria III</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item1</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item2</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item3</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item4</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row collapse category-3-more">
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item5</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item6</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item7</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="rotate-box-info">
-                        <img class="w-100" src="http://via.placeholder.com/350x150" alt="Image 1">
-                        <p>Item8</p>
-                    </div>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <a href=".category-3-more" data-toggle="collapse">Fechar</a>
-                </div>
-            </div>
-            <div class="row category-3-more collapse in">
-                <div class="col-sm-12 text-center">
-                    <a href=".category-3-more" data-toggle="collapse">Mais</a>
-                </div>
-            </div>
-
-
+            <button (click)="submitted=false" class="btn btn-primary">Refazer</button>
         </div>
     </div>
+
 </section>
+

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:html';
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
@@ -17,6 +16,7 @@ class LoginComponent {
   User user =  User(1, "", "", "", "", "", "");
   bool submitted = false;
   String out;
+  String token="";
   bool valid = false;
 
   final LoginService _loginService;
@@ -36,9 +36,14 @@ class LoginComponent {
       valid = true;
       String token = await _loginService.getToken(user.email);
       if(token != 'ERROR')
-        window.localStorage['id'] = token;
+        window.localStorage['neec_id'] = token;
     }else
       valid = false;
+  }
+
+  MainPageUpdated(){
+    window.location.assign('http://127.0.0.1:8080/#/geral');    //mudar depois para o server do evento
+    window.location.reload();
   }
 
 }

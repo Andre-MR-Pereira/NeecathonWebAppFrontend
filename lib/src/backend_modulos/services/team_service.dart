@@ -14,7 +14,7 @@ class TeamService {
   static final _headers = {'Content-Type': 'application/json'};
   Future<String> create(Team team) async {
     try {
-      final reponse = await _http.post("http://51.145.20.150:1995/" + "api/create/", headers: _headers, body: json.encode(team.toJson()));
+      final reponse = await _http.post("http://51.140.25.28:1995/" + "api/create/", headers: _headers, body: json.encode(team.toJson()));
       return(reponse.body);
     }catch (e){
       return "No internet connection";
@@ -22,10 +22,9 @@ class TeamService {
     }
   }
 
-  // TODO finish this up
   Future<List<Team>> getAllTeams() async {
     try {
-      final response = await _http.get("http://51.145.20.150:1995/" + "teams/simple/", headers: _headers);
+      final response = await _http.get("http://51.140.25.28:1995/" + "teams/simple/", headers: _headers);
       final teams = (_extractData(response) as List)
         .map((value) => Team.fromJson(value))
         .toList();
@@ -39,13 +38,36 @@ class TeamService {
 
   Future<Team> getTeam(String teamName) async {
     try {
-      final response = await _http.get("http://51.145.20.150:1995/" + "teams/" + teamName, headers: _headers);
+      final response = await _http.get("http://51.140.25.28:1995/" + "teams/" + teamName, headers: _headers);
       // Change this fromJson to a more complex one for the team details
       return Team.fromJson(json.decode(response.body));
     }catch (e){
       return null;
       // return "No internet connection";
       //throw _handleError;
+    }
+  }
+
+  Future<String> updateCash(String teamName, int cash) async {
+    try {
+      final response = await _http.post("http://51.140.25.28:1995/" + "teams/update/", headers: _headers, body: json.encode({'name': teamName, 'cash': cash}));
+      return response.body;
+    } catch (e) {
+      return "error";
+    }
+  }
+
+  Future<Team> getMyTeam(String token) async{
+    try{
+      _headers['Authorization'] = 'Bearer ' + token;
+
+      final response = await _http.get("http://51.140.25.28:1995/" + "teams/me/", headers: _headers);
+
+      return Team.fromJson(json.decode(response.body));
+    }
+    catch(e){
+      print(e.toString());
+      return null;
     }
   }
 
