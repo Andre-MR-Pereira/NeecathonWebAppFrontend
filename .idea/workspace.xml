@@ -22,7 +22,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/GitHub repository/neecathon-shop/backend" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -131,7 +131,16 @@
       <workItem from="1570487803840" duration="1383000" />
       <workItem from="1570555698915" duration="14826000" />
       <workItem from="1570718134891" duration="995000" />
-      <workItem from="1570727097108" duration="4610000" />
+      <workItem from="1570727097108" duration="7235000" />
+      <workItem from="1570813903478" duration="1232000" />
+      <workItem from="1570815687352" duration="652000" />
+      <workItem from="1570821089179" duration="1133000" />
+      <workItem from="1570822890378" duration="7632000" />
+      <workItem from="1570841102592" duration="733000" />
+      <workItem from="1570843490175" duration="5125000" />
+      <workItem from="1570851960506" duration="2588000" />
+      <workItem from="1570855668529" duration="1987000" />
+      <workItem from="1570859014832" duration="1456000" />
     </task>
     <servers />
   </component>

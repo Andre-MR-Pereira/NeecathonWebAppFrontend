@@ -15,13 +15,13 @@
                 <div class="container">
                  <div class="col-md-3 col-sm-6 mt-30" *ngFor="let product of products">
                         <div style="border: 3px solid gray;">
-                           <div class="desc-container">
-                              <div class="desc h-100 w-100 d-none" style="font-family: 'Bitwise', Fallback, sans-serif">
+                           <div class="desc-container" style="width:249px;height: 249px">
+                              <div class="desc h-100 w-100 d-none">
                                  <p>{{product.description}}</p>
                                 </div>
                               <img class="w-100 h-100 desc-img" src="{{product.image_path}}" alt="{{product.name}}">
                           </div>
-                           <p class="text-center">{{product.name}}  Q:{{product.quantity}}</p>
+                           <p class="text-center">{{product.name}} <p>P:{{product.price}}  Q:{{product.quantity}}</p></p>
                      </div>
                      <div class="d-flex">
                          <div class="col-xs-9 p-0">

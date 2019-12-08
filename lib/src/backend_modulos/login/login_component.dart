@@ -42,7 +42,7 @@ class LoginComponent {
   }
 
   MainPageUpdated(){
-    window.location.assign('http://127.0.0.1:8080/#/geral');    //mudar depois para o server do evento
+    window.location.assign('http://51.140.123.139:8080');    //mudar depois para o server do evento
     window.location.reload();
   }
 

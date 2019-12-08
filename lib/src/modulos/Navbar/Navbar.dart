@@ -33,7 +33,10 @@ class NavBarform implements OnInit, AfterViewInit{
     loggedin= Log.containsKey('neec_id');
     if(loggedin==true){
       team = await _teamService.getMyTeam(window.localStorage['neec_id']);
-      team.isAdmin=true;
+      if(team.name=="neec")
+        {
+          team.isAdmin=true;
+        }
     }
   }
 

@@ -14,7 +14,7 @@ class TransactionService {
     try{
       headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.get("http://51.140.25.28:1995/" + "transactions/", headers: headers);
+      final response = await _http.get("http://51.140.123.139:1995/" + "transactions/", headers: headers);
 
       final transactions=(_extractData(response) as List)
           .map((value) => Transaction.fromJson(value))
@@ -31,7 +31,7 @@ class TransactionService {
   Future<String> create(Transaction transaction, String token) async {
     try {
       headers['Authorization'] = 'Bearer ' + token;
-      final reponse = await _http.post("http://51.140.25.28:1995/" + "transactions/create/", headers: headers, body: json.encode(transaction.toJson()));
+      final reponse = await _http.post("http://51.140.123.139:1995/" + "transactions/create/", headers: headers, body: json.encode(transaction.toJson()));
       return(reponse.body);
     }catch (e){
       return "No internet connection";
@@ -40,7 +40,7 @@ class TransactionService {
 
   Future<List<Transaction>> getTransactionsFromTeamName(String teamName) async{
     try{
-      final response = await _http.get("http://51.140.25.28:1995/" + "transactions/" + teamName, headers: headers);
+      final response = await _http.get("http://51.140.123.139:1995/" + "transactions/" + teamName, headers: headers);
 
       //print(_extractData(response) as List);
       //print(Transaction.fromJson(_extractData(response)));
@@ -65,7 +65,7 @@ class TransactionService {
     try{
       headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.get("http://51.140.25.28:1995/" + "transactions/me/", headers: headers);
+      final response = await _http.get("http://51.140.123.139:1995/" + "transactions/me/", headers: headers);
 
       final transactions=(_extractData(response) as List)
           .map((value) => Transaction.fromJson(value))

@@ -15,7 +15,7 @@ class ProductService{
     try {
       _headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.get("http://51.140.25.28:1995/" + "product/", headers: _headers,);
+      final response = await _http.get("http://51.140.123.139:1995/" + "product/", headers: _headers,);
 
       final products=(_extractData(response) as List)
           .map((value) => Product.fromJson(value))
@@ -33,7 +33,7 @@ class ProductService{
     try {
       _headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.post("http://51.140.25.28:1995/" + "product/create/", headers: _headers, body: json.encode(product.toJson()));
+      final response = await _http.post("http://51.140.123.139:1995/" + "product/create/", headers: _headers, body: json.encode(product.toJson()));
       return(response.body);
     }
     catch(e){
@@ -46,7 +46,7 @@ class ProductService{
     try {
       _headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.post("http://51.140.25.28:1995/" + "product/update/", headers: _headers, body: json.encode({'name': product.name, 'increase': increase}));
+      final response = await _http.post("http://51.140.123.139:1995/" + "product/update/", headers: _headers, body: json.encode({'name': product.name, 'increase': increase}));
       return(response.body);
     }
     catch(e){

@@ -17,7 +17,7 @@ class PurchaseService{
     try {
       _headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.get("http://51.140.25.28:1995/" + "purchases/", headers: _headers,);
+      final response = await _http.get("http://51.140.123.139:1995/" + "purchases/", headers: _headers,);
 
       final purchases=(_extractData(response) as List)
           .map((value) => Purchase.fromJson(value))
@@ -33,7 +33,7 @@ class PurchaseService{
 
   Future<List<Purchase>> getPurchasesFromTeamName(String teamName) async{
     try{
-      final response = await _http.get("http://51.140.25.28:1995/" + "purchases/" + teamName, headers: _headers);
+      final response = await _http.get("http://51.140.123.139:1995/" + "purchases/" + teamName, headers: _headers);
       final purchases =
         (_extractData(response) as List)
           .map((value) => Purchase.fromJson(value))   //Transaction.fromJson(json.decode(response.body)))??? ja vem com o extract data?
@@ -50,7 +50,7 @@ class PurchaseService{
     try{
       _headers['Authorization'] = 'Bearer ' + token;
 
-      final response = await _http.get("http://51.140.25.28:1995/" + "purchases/me/", headers: _headers);
+      final response = await _http.get("http://51.140.123.139:1995/" + "purchases/me/", headers: _headers);
       
       final purchases=(_extractData(response) as List)
           .map((value) => Purchase.fromJson(value))
@@ -67,7 +67,7 @@ class PurchaseService{
   Future<String> CreatePurchase(Purchase purchase, String token) async{
     try{
       _headers['Authorization'] = 'Bearer ' + token;
-      final response = await _http.post("http://51.140.25.28:1995/" + "purchases/create/", body: json.encode(purchase.toJson()), headers: _headers);
+      final response = await _http.post("http://51.140.123.139:1995/" + "purchases/create/", body: json.encode(purchase.toJson()), headers: _headers);
       return (response.body);
     }
     catch(e){
